@@ -7,11 +7,12 @@ import { UserService } from '../user/user.service';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     private readonly userService: UserService,
+
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: "pjnmklsd09u834sjodsnmkld",
+      secretOrKey: "Your secret key",
     });
   }
 

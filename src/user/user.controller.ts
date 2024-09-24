@@ -4,6 +4,8 @@ import { signupDto } from "./dto/signup.dto";
 import { User } from "./entity/entity";
 import { SigninDto } from "./dto/signin.dto";
 import { JwtAuthGuard } from "../auth/jwt.guard";
+import { ForgotPassword } from "./dto/forgot.password.dto";
+import { ResetPassword } from "./dto/reset.password.dto";
 
 @Controller('users')
 export class UserController {
@@ -25,10 +27,21 @@ export class UserController {
   async signin(@Body() signindto: SigninDto) {
     return await this.userService.signin(signindto);
   }
+
   @UseGuards(JwtAuthGuard)
   @Delete("/:email")
   async del_user(@Param('email') email: string) {
     return await this.userService.deleteUser(email)
+  }
+
+  @Post("forgot-password")
+  async forgotPassword(@Body() forgotPassworddto:ForgotPassword){
+    return await this.userService.ForgotPassword(forgotPassworddto.email)
+  }
+
+  @Post("reset-password")
+  async ResetPassword(@Body() resetpasswordDto:ResetPassword){
+    return await this.userService.resetPassword(resetpasswordDto.token, resetpasswordDto.newPassword)
   }
 
 }

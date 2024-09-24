@@ -31,7 +31,7 @@
 ```bash
 $ npm install
 ```
-
+ 
 ## Compile and run the project
 
 ```bash
@@ -57,6 +57,10 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+we used docker to crete api
+
+unit testing 
+
 
 ## Resources
 
